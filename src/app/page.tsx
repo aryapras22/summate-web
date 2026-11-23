@@ -2,269 +2,355 @@ import Image from "next/image";
 import Link from "next/link";
 import { appStoreUrl } from "@/site";
 
-const trailBears = [
-  { src: "/brand/bear.png", alt: "Summate trail bear avatar" },
-  { src: "/brand/bear-mustard.png", alt: "Mustard bear avatar" },
-  { src: "/brand/bear-cyan.png", alt: "Cyan bear avatar" },
-  { src: "/brand/bear-crimson.png", alt: "Crimson bear avatar" },
-  { src: "/brand/bear-green.png", alt: "Green bear avatar" },
-];
-
 const groupBears = [
-  { src: "/brand/bear-orange.png", alt: "Orange bear avatar" },
-  { src: "/brand/bear-purple.png", alt: "Purple bear avatar" },
-  { src: "/brand/bear-navy.png", alt: "Navy bear avatar" },
-  { src: "/brand/bear-brown.png", alt: "Brown bear avatar" },
+  { src: "/brand/bear-mustard.png", alt: "Mustard Summate bear avatar" },
+  { src: "/brand/bear-cyan.png", alt: "Cyan Summate bear avatar" },
+  { src: "/brand/bear-orange.png", alt: "Orange Summate bear avatar" },
+  { src: "/brand/bear-green.png", alt: "Green Summate bear avatar" },
+  { src: "/brand/bear-crimson.png", alt: "Crimson Summate bear avatar" },
+  { src: "/brand/bear-purple.png", alt: "Purple Summate bear avatar" },
 ];
 
-const features = [
-  {
-    id: "discovery",
-    badge: "3D Maps and Weather",
-    title: "Trail discovery with 3D map, weather, and elevation",
-    description:
-      "Inspect trails on a 3D terrain map, review route elevation profiles before you depart, and check local weather forecasts for your trailhead and route.",
-  },
-  {
-    id: "gpx",
-    badge: "Files and AirDrop",
-    title: "GPX import and AirDrop sharing",
-    description:
-      "Import GPX route files into your on-device library from Files or other apps, and send saved routes directly to nearby hikers over AirDrop.",
-  },
-  {
-    id: "bluetooth",
-    badge: "Peer-to-Peer Bluetooth",
-    title: "Group location sharing over Bluetooth without cell signal, plus emergency alert",
-    description:
-      "Connect directly with nearby hikers over Bluetooth without cellular coverage. Share your display name, bear avatar, live location, and send an emergency alert directly to group members' devices.",
-  },
-  {
-    id: "recording",
-    badge: "Barometric Altimeter",
-    title: "Background hike recording with barometric altimeter",
-    description:
-      "Record hikes reliably in the background while your iPhone stays in your pocket. Track route progress, elapsed time, and elevation gain measured with the barometric altimeter.",
-  },
+const checkpoints = [
+  { id: "stage-01", num: "01", shortLabel: "Choose" },
+  { id: "stage-02", num: "02", shortLabel: "Route" },
+  { id: "stage-03", num: "03", shortLabel: "Climb" },
+  { id: "stage-04", num: "04", shortLabel: "Summit" },
 ];
+
+function MobileCheckpoint({ isSummit }: { isSummit?: boolean }) {
+  if (isSummit) {
+    return (
+      <svg
+        width="22"
+        height="26"
+        viewBox="0 0 22 26"
+        className="stage__rail-icon"
+        aria-hidden="true"
+      >
+        <line
+          x1="7"
+          y1="20"
+          x2="7"
+          y2="3"
+          className="spine-desktop__flag-pole"
+        />
+        <path
+          d="M 7 3 L 20 8 L 7 13 Z"
+          className="spine-desktop__flag-cloth"
+        />
+        <circle cx="7" cy="20" r="4.5" className="spine-desktop__dot-ring" />
+        <circle cx="7" cy="20" r="2" className="spine-desktop__dot-core" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      className="stage__rail-icon"
+      aria-hidden="true"
+    >
+      <circle cx="9" cy="9" r="6" className="spine-desktop__dot-ring" />
+      <circle cx="9" cy="9" r="2.5" className="spine-desktop__dot-core" />
+    </svg>
+  );
+}
 
 export default function HomePage() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-10 sm:py-14">
-      <section className="relative overflow-hidden rounded-[28px] border border-border bg-surface">
-        <Image
-          src="/brand/mountain-bg.jpg"
-          alt="Mountain trail ridge at dusk"
-          fill
-          priority
-          className="object-cover opacity-55"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background"
-        />
+    <div className="page-shell">
+      <section className="hero fade-in" aria-labelledby="hero-heading">
+        <div className="hero__inner">
+          <h1 id="hero-heading" className="hero__headline">
+            Hike together where the signal ends.
+          </h1>
 
-        <div className="relative z-10 grid gap-8 p-7 sm:p-12 lg:grid-cols-[1.35fr_0.9fr] lg:items-end">
-          <div>
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-surface-elevated/90 px-3.5 py-1.5">
-              <span
-                aria-hidden="true"
-                className="h-4 w-4"
-                style={{
-                  background: "linear-gradient(180deg, #F0BA42 0%, #DFB556 100%)",
-                  WebkitMaskImage: "url(/brand/logo-mark.svg)",
-                  maskImage: "url(/brand/logo-mark.svg)",
-                  WebkitMaskRepeat: "no-repeat",
-                  maskRepeat: "no-repeat",
-                  WebkitMaskPosition: "center",
-                  maskPosition: "center",
-                  WebkitMaskSize: "contain",
-                  maskSize: "contain",
-                }}
-              />
-              <span className="text-xs font-semibold uppercase tracking-wider text-cream">
-                For iPhone
-              </span>
-            </div>
+          <p className="hero__support">
+            3D trail maps, GPX routes, Bluetooth group location, and barometric
+            recording for iPhone.
+          </p>
 
-            <h1 className="mt-5 max-w-2xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Trail navigation and off-grid group safety with no account required.
-            </h1>
-
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              Summate combines 3D trail maps, elevation profiles, weather forecasts, GPX import and AirDrop sharing, background barometric hike recording, and peer-to-peer Bluetooth group sharing. Your routes and hike history stay on your device.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              <a
-                href={appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-accent-button px-7 py-3.5 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
-              >
-                Download on the App Store
-              </a>
-              <Link
-                href="/privacy"
-                className="inline-flex items-center justify-center rounded-full border border-border bg-surface-elevated px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-white/25"
-              >
-                Read Privacy Policy
-              </Link>
-            </div>
-          </div>
-
-          <div className="rounded-[24px] border border-border bg-surface/90 p-5 backdrop-blur-md">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-background p-2.5">
-                  <span
-                    aria-hidden="true"
-                    className="block h-full w-full"
-                    style={{
-                      background: "linear-gradient(180deg, #F0BA42 0%, #DFB556 100%)",
-                      WebkitMaskImage: "url(/brand/logo-mark.svg)",
-                      maskImage: "url(/brand/logo-mark.svg)",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskPosition: "center",
-                      maskPosition: "center",
-                      WebkitMaskSize: "contain",
-                      maskSize: "contain",
-                    }}
-                  />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">Trail Group</p>
-                  <p className="text-xs text-muted">Direct Bluetooth link, no cell signal</p>
-                </div>
-              </div>
-              <span className="rounded-full bg-cream/15 px-3 py-1 text-xs font-semibold text-cream">
-                On Device
-              </span>
-            </div>
-
-            <div className="mt-5 flex items-center -space-x-2.5">
-              {trailBears.map((bear) => (
-                <Image
-                  key={bear.src}
-                  src={bear.src}
-                  alt={bear.alt}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full border-2 border-background bg-surface-elevated object-cover"
-                />
-              ))}
-            </div>
-
-            <div className="mt-5 overflow-hidden rounded-2xl border border-border bg-background/80 px-4 pt-3">
-              <Image
-                src="/brand/mountain.png"
-                alt="Summate mountain elevation artwork"
-                width={1863}
-                height={671}
-                className="h-20 w-full object-contain object-bottom"
-              />
-            </div>
+          <div className="hero__actions">
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary"
+            >
+              Download on the App Store
+            </a>
+            <Link href="/privacy" className="quiet-link">
+              Privacy policy
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="pt-14" aria-labelledby="features-heading">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 id="features-heading" className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Built for the trail
-            </h2>
-            <p className="mt-2 max-w-2xl text-sm text-muted">
-              Core navigation, recording, and group safety tools designed for iPhone when cellular coverage drops.
-            </p>
-          </div>
-          <span className="inline-flex w-fit rounded-full border border-border bg-surface px-3.5 py-1 text-xs font-semibold text-accent">
-            iOS Only
-          </span>
+      <section className="workflow" aria-label="Four stages of a hike">
+        <div className="spine-desktop">
+          <svg
+            viewBox="0 0 1120 196"
+            className="spine-desktop__svg"
+            role="img"
+            aria-label="Rising elevation profile across four hike stages ending at a summit flag"
+          >
+            <line x1="16" y1="46" x2="1104" y2="46" className="spine-desktop__grid" />
+            <line x1="16" y1="96" x2="1104" y2="96" className="spine-desktop__grid" />
+            <line x1="16" y1="146" x2="1104" y2="146" className="spine-desktop__grid" />
+            <line x1="16" y1="184" x2="1104" y2="184" className="spine-desktop__grid" />
+
+            <path
+              d="M 24 176 C 68 172, 102 162, 140 158 C 205 152, 240 156, 295 144 C 345 133, 378 134, 420 128 C 485 118, 535 122, 595 104 C 635 92, 668 96, 700 90 C 765 78, 825 84, 888 64 C 928 51, 956 50, 980 46 C 1018 46, 1052 72, 1096 92 L 1096 184 L 24 184 Z"
+              className="spine-desktop__area"
+            />
+
+            <line x1="140" y1="158" x2="140" y2="184" className="spine-desktop__drop" />
+            <line x1="420" y1="128" x2="420" y2="184" className="spine-desktop__drop" />
+            <line x1="700" y1="90" x2="700" y2="184" className="spine-desktop__drop" />
+            <line x1="980" y1="46" x2="980" y2="184" className="spine-desktop__drop" />
+
+            <path
+              d="M 24 176 C 68 172, 102 162, 140 158 C 205 152, 240 156, 295 144 C 345 133, 378 134, 420 128 C 485 118, 535 122, 595 104 C 635 92, 668 96, 700 90 C 765 78, 825 84, 888 64 C 928 51, 956 50, 980 46 C 1018 46, 1052 72, 1096 92"
+              className="spine-desktop__ridge"
+            />
+
+            <g>
+              <line
+                x1="980"
+                y1="44"
+                x2="980"
+                y2="10"
+                className="spine-desktop__flag-pole"
+              />
+              <path
+                d="M 980 10 L 1014 19 L 980 28 Z"
+                className="spine-desktop__flag-cloth"
+              />
+            </g>
+
+            <g>
+              <circle cx="140" cy="158" r="7" className="spine-desktop__dot-ring" />
+              <circle cx="140" cy="158" r="3" className="spine-desktop__dot-core" />
+            </g>
+            <g>
+              <circle cx="420" cy="128" r="7" className="spine-desktop__dot-ring" />
+              <circle cx="420" cy="128" r="3" className="spine-desktop__dot-core" />
+            </g>
+            <g>
+              <circle cx="700" cy="90" r="7" className="spine-desktop__dot-ring" />
+              <circle cx="700" cy="90" r="3" className="spine-desktop__dot-core" />
+            </g>
+            <g>
+              <circle cx="980" cy="46" r="8" className="spine-desktop__dot-ring" />
+              <circle cx="980" cy="46" r="3.5" className="spine-desktop__dot-core" />
+            </g>
+          </svg>
+
+          <nav aria-label="Hike stages" className="spine-desktop__checkpoints">
+            {checkpoints.map((cp) => (
+              <a key={cp.id} href={`#${cp.id}`} className="spine-node">
+                <span className="spine-node__num">{cp.num}</span>
+                <span>{cp.shortLabel}</span>
+              </a>
+            ))}
+          </nav>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          {features.map((feature) => (
-            <article
-              key={feature.id}
-              className="flex flex-col justify-between rounded-[24px] border border-border bg-surface p-6 sm:p-7"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="rounded-full bg-surface-elevated px-3 py-1 text-xs font-semibold text-cream">
-                    {feature.badge}
-                  </span>
-                  {feature.id === "bluetooth" && (
-                    <span className="rounded-full bg-danger/20 px-3 py-1 text-xs font-semibold text-[#FFB4AA]">
-                      Emergency Alert
-                    </span>
-                  )}
-                </div>
-                <h3 className="mt-4 text-lg font-bold tracking-tight text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                  {feature.description}
+        <div className="stages-list">
+          <article id="stage-01" className="stage">
+            <div className="stage__rail" aria-hidden="true">
+              <MobileCheckpoint />
+              <span className="stage__rail-line" />
+            </div>
+
+            <div className="stage__content">
+              <div className="stage__copy">
+                <p className="stage__label">01</p>
+                <h2 className="stage__heading">Choose a mountain</h2>
+                <p className="stage__body">
+                  Inspect trails on a 3D terrain map, read route elevation
+                  profiles before you leave camp, and check local weather
+                  forecasts for your trailhead and ridge.
                 </p>
+                <ul className="stage__points" aria-label="Stage 01 capabilities">
+                  <li className="stage__point">Trail discovery</li>
+                  <li className="stage__point">3D terrain map</li>
+                  <li className="stage__point">Weather forecast</li>
+                  <li className="stage__point">Elevation profile</li>
+                </ul>
               </div>
 
-              {feature.id === "discovery" && (
-                <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-background/70 px-4 pt-3">
+              <figure className="stage__visual">
+                <div className="art-photo">
                   <Image
-                    src="/brand/mountain.png"
-                    alt="3D mountain terrain silhouette"
-                    width={1863}
-                    height={671}
-                    className="h-16 w-full object-contain object-bottom"
+                    src="/brand/mountain-bg.jpg"
+                    alt="Volcanic mountain ridge rising above morning cloud cover"
+                    width={1350}
+                    height={1800}
+                    priority
+                    className="art-photo__img"
                   />
                 </div>
-              )}
+              </figure>
+            </div>
+          </article>
 
-              {feature.id === "gpx" && (
-                <div className="mt-6 flex items-center justify-between rounded-2xl border border-border bg-background/70 px-4 py-3">
-                  <span className="text-xs font-medium text-muted">Saved GPX Route</span>
-                  <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-                    Ready for AirDrop
-                  </span>
+          <article id="stage-02" className="stage stage--flip">
+            <div className="stage__rail" aria-hidden="true">
+              <MobileCheckpoint />
+              <span className="stage__rail-line" />
+            </div>
+
+            <div className="stage__content">
+              <div className="stage__copy">
+                <p className="stage__label">02</p>
+                <h2 className="stage__heading">Bring your route</h2>
+                <p className="stage__body">
+                  Import GPX route files from the iOS Files app or other apps
+                  into your on-device library, then send saved trails directly
+                  to nearby hikers over AirDrop.
+                </p>
+                <ul className="stage__points" aria-label="Stage 02 capabilities">
+                  <li className="stage__point">GPX import</li>
+                  <li className="stage__point">AirDrop sharing</li>
+                  <li className="stage__point">Saved on device</li>
+                </ul>
+              </div>
+
+              <figure className="stage__visual">
+                <div className="art-gpx">
+                  <svg
+                    viewBox="0 0 480 260"
+                    className="art-gpx__svg"
+                    role="img"
+                    aria-label="Topographic contour rings with a dashed GPX trail connecting three waypoints"
+                  >
+                    <path
+                      d="M 28 220 C 110 198, 175 232, 260 190 C 335 152, 395 168, 452 126"
+                      className="art-gpx__contour"
+                    />
+                    <path
+                      d="M 28 164 C 122 140, 198 164, 286 122 C 354 88, 404 94, 452 64"
+                      className="art-gpx__contour"
+                    />
+                    <path
+                      d="M 56 108 C 142 84, 222 104, 314 62 C 368 38, 412 36, 448 22"
+                      className="art-gpx__contour"
+                    />
+                    <path
+                      d="M 68 206 C 126 190, 148 148, 214 142 C 276 136, 294 92, 352 78 C 384 70, 404 58, 422 48"
+                      className="art-gpx__track"
+                    />
+                    <circle cx="68" cy="206" r="7" className="art-gpx__waypoint" />
+                    <circle cx="68" cy="206" r="3" className="art-gpx__waypoint-fill" />
+                    <circle cx="214" cy="142" r="7" className="art-gpx__waypoint" />
+                    <circle cx="214" cy="142" r="3" className="art-gpx__waypoint-fill" />
+                    <circle cx="422" cy="48" r="8" className="art-gpx__waypoint" />
+                    <circle cx="422" cy="48" r="3.5" className="art-gpx__waypoint-fill" />
+                  </svg>
                 </div>
-              )}
+              </figure>
+            </div>
+          </article>
 
-              {feature.id === "bluetooth" && (
-                <div className="mt-6 flex items-center justify-between rounded-2xl border border-border bg-background/70 px-4 py-3">
-                  <div className="flex items-center -space-x-2">
-                    {groupBears.map((bear) => (
+          <article id="stage-03" className="stage">
+            <div className="stage__rail" aria-hidden="true">
+              <MobileCheckpoint />
+              <span className="stage__rail-line" />
+            </div>
+
+            <div className="stage__content">
+              <div className="stage__copy">
+                <p className="stage__label">03</p>
+                <h2 className="stage__heading">Climb together</h2>
+                <p className="stage__body">
+                  Connect directly with nearby hikers over Bluetooth when cell
+                  signal disappears. Share your display name, bear avatar, and
+                  live location peer to peer, with no server in between.
+                </p>
+                <div className="alert-callout">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className="alert-callout__icon"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8 1.75L14.5 13.25H1.5L8 1.75Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M8 6V9.25"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="8" cy="11.4" r="0.85" fill="currentColor" />
+                  </svg>
+                  <span>Emergency alert over direct Bluetooth</span>
+                </div>
+              </div>
+
+              <figure className="stage__visual">
+                <div className="art-bears__grid">
+                  {groupBears.map((bear) => (
+                    <div key={bear.src} className="art-bears__item">
                       <Image
-                        key={bear.src}
                         src={bear.src}
                         alt={bear.alt}
-                        width={36}
-                        height={36}
-                        className="h-9 w-9 rounded-full border-2 border-background bg-surface-elevated object-cover"
+                        width={200}
+                        height={200}
+                        className="art-bears__img"
                       />
-                    ))}
-                  </div>
-                  <span className="text-xs font-semibold text-cream">4 Nearby Hikers</span>
+                    </div>
+                  ))}
                 </div>
-              )}
+              </figure>
+            </div>
+          </article>
 
-              {feature.id === "recording" && (
-                <div className="mt-6 flex items-center gap-3 rounded-2xl border border-border bg-background/70 px-4 py-3">
+          <article id="stage-04" className="stage stage--flip">
+            <div className="stage__rail" aria-hidden="true">
+              <MobileCheckpoint isSummit />
+            </div>
+
+            <div className="stage__content">
+              <div className="stage__copy">
+                <p className="stage__label">04</p>
+                <h2 className="stage__heading">Record the summit</h2>
+                <p className="stage__body">
+                  Record hikes in the background while your iPhone stays in your
+                  pocket. Track elapsed time and elevation gain with the
+                  barometric altimeter, with your hike history kept strictly on
+                  your device.
+                </p>
+                <ul className="stage__points" aria-label="Stage 04 capabilities">
+                  <li className="stage__point">Background recording</li>
+                  <li className="stage__point">Barometric altimeter</li>
+                  <li className="stage__point">History stays on device</li>
+                </ul>
+              </div>
+
+              <figure className="stage__visual">
+                <div className="art-summit">
                   <Image
-                    src="/brand/bear.png"
-                    alt="Hiker bear mascot"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-full border border-border bg-surface-elevated object-cover"
+                    src="/brand/mountain.png"
+                    alt="Layered golden mountain silhouette topped with a summit flag"
+                    width={1863}
+                    height={671}
+                    className="art-summit__img"
                   />
-                  <div className="text-xs">
-                    <p className="font-semibold text-foreground">Active Hike Recording</p>
-                    <p className="text-muted">Barometric elevation gain tracked in background</p>
-                  </div>
                 </div>
-              )}
-            </article>
-          ))}
+              </figure>
+            </div>
+          </article>
         </div>
       </section>
     </div>
