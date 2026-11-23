@@ -11,7 +11,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} | Offline Trail Navigation and Group Safety`,
+    default: `${siteName} | Hiking with Your Group, On iPhone and Apple Watch`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
