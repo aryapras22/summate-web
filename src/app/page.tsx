@@ -196,7 +196,7 @@ export default function HomePage() {
                     {feature.badge}
                   </span>
                   {feature.id === "bluetooth" && (
-                    <span className="rounded-full bg-danger/20 px-3 py-1 text-xs font-semibold text-danger">
+                    <span className="rounded-full bg-danger/20 px-3 py-1 text-xs font-semibold text-[#FFB4AA]">
                       Emergency Alert
                     </span>
                   )}
