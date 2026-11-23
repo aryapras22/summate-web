@@ -4,14 +4,17 @@ import { contactEmail, developerName, effectiveDate } from "@/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Summate handles on-device data, Bluetooth group sharing, WatchConnectivity sync, permissions, and third-party services.",
+    "How Summate handles on-device data, Bluetooth group sharing, permissions, and third-party services.",
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <header className="border-b border-border pb-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+    <div className="mx-auto w-full max-w-3xl px-6 py-12 sm:py-16">
+      <header className="rounded-[28px] border border-border bg-surface p-7 sm:p-9">
+        <span className="inline-flex rounded-full bg-surface-elevated px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cream">
+          On-Device Privacy
+        </span>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Privacy Policy
         </h1>
         <p className="mt-3 text-sm text-muted">
@@ -23,29 +26,32 @@ export default function PrivacyPage() {
         </p>
       </header>
 
-      <div className="mt-10 space-y-10 text-sm leading-relaxed text-muted">
-        <section aria-labelledby="data-collected">
-          <h2 id="data-collected" className="text-xl font-semibold text-foreground">
+      <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted">
+        <section
+          aria-labelledby="data-collected"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="data-collected" className="text-xl font-bold text-foreground">
             Data Collected and How
           </h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>
-              <span className="text-foreground">Stored only on device:</span> routes, hike history, display name, avatar choice, and settings are saved locally using SwiftData, UserDefaults, and Keychain.
+              <span className="text-foreground font-medium">Stored only on device:</span> routes, hike history, display name, avatar choice, and settings are saved locally using SwiftData, UserDefaults, and Keychain.
             </li>
             <li>
-              <span className="text-foreground">Permissions:</span> Summate requests access to Location (When In Use and Always, with Always used only during an active hike), Motion (altimeter), and Bluetooth.
+              <span className="text-foreground font-medium">Permissions:</span> Summate requests access to Location (When In Use and Always, with Always used only during an active hike), Motion (altimeter), and Bluetooth.
             </li>
             <li>
-              <span className="text-foreground">Bluetooth:</span> display name, avatar, live location, and emergency alerts go directly to nearby group members&apos; devices over Bluetooth, not through any server.
-            </li>
-            <li>
-              <span className="text-foreground">Device sync:</span> iPhone and Apple Watch sync directly over WatchConnectivity.
+              <span className="text-foreground font-medium">Bluetooth:</span> display name, avatar, live location, and emergency alerts go directly to nearby group members&apos; devices over Bluetooth, not through any server.
             </li>
           </ul>
         </section>
 
-        <section aria-labelledby="how-used">
-          <h2 id="how-used" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="how-used"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="how-used" className="text-xl font-bold text-foreground">
             How Each Is Used
           </h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
@@ -61,14 +67,14 @@ export default function PrivacyPage() {
             <li>
               Bluetooth permission is used to exchange display name, avatar, live location, and emergency alerts directly with nearby group members&apos; devices.
             </li>
-            <li>
-              WatchConnectivity is used to keep routes and hike activity synced between your paired iPhone and Apple Watch.
-            </li>
           </ul>
         </section>
 
-        <section aria-labelledby="third-parties">
-          <h2 id="third-parties" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="third-parties"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="third-parties" className="text-xl font-bold text-foreground">
             Third Parties and Their Policies
           </h2>
           <p className="mt-3">
@@ -76,34 +82,34 @@ export default function PrivacyPage() {
           </p>
           <ul className="mt-3 list-disc space-y-3 pl-5">
             <li>
-              <span className="text-foreground">Mapbox:</span> provides map tiles; the Directions API receives route start and end coordinates; the Maps SDK sends de-identified location and usage telemetry by default, and users can opt out via the map&apos;s &quot;i&quot; attribution button. Privacy policy:{" "}
+              <span className="text-foreground font-medium">Mapbox:</span> provides map tiles; the Directions API receives route start and end coordinates; the Maps SDK sends de-identified location and usage telemetry by default, and users can opt out via the map&apos;s &quot;i&quot; attribution button. Privacy policy:{" "}
               <a
                 href="https://www.mapbox.com/legal/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent underline underline-offset-4 hover:opacity-90"
+                className="text-accent underline underline-offset-4 hover:text-accent-button"
               >
                 https://www.mapbox.com/legal/privacy
               </a>
             </li>
             <li>
-              <span className="text-foreground">Open-Meteo:</span> receives route coordinates for elevation data. Terms:{" "}
+              <span className="text-foreground font-medium">Open-Meteo:</span> receives route coordinates for elevation data. Terms:{" "}
               <a
                 href="https://open-meteo.com/en/terms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent underline underline-offset-4 hover:opacity-90"
+                className="text-accent underline underline-offset-4 hover:text-accent-button"
               >
                 https://open-meteo.com/en/terms
               </a>
             </li>
             <li>
-              <span className="text-foreground">Apple WeatherKit:</span> receives location for weather forecasts. Privacy policy:{" "}
+              <span className="text-foreground font-medium">Apple WeatherKit:</span> receives location for weather forecasts. Privacy policy:{" "}
               <a
                 href="https://www.apple.com/legal/privacy/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent underline underline-offset-4 hover:opacity-90"
+                className="text-accent underline underline-offset-4 hover:text-accent-button"
               >
                 https://www.apple.com/legal/privacy/
               </a>
@@ -111,8 +117,11 @@ export default function PrivacyPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="retention">
-          <h2 id="retention" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="retention"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="retention" className="text-xl font-bold text-foreground">
             Retention
           </h2>
           <p className="mt-3">
@@ -120,8 +129,11 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section aria-labelledby="deletion">
-          <h2 id="deletion" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="deletion"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="deletion" className="text-xl font-bold text-foreground">
             Deletion and Revoking Consent
           </h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
@@ -131,8 +143,11 @@ export default function PrivacyPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="children">
-          <h2 id="children" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="children"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="children" className="text-xl font-bold text-foreground">
             Children
           </h2>
           <p className="mt-3">
@@ -140,8 +155,11 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section aria-labelledby="changes">
-          <h2 id="changes" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="changes"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="changes" className="text-xl font-bold text-foreground">
             Changes to the Policy
           </h2>
           <p className="mt-3">
@@ -149,25 +167,28 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section aria-labelledby="contact">
-          <h2 id="contact" className="text-xl font-semibold text-foreground">
+        <section
+          aria-labelledby="contact"
+          className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
+        >
+          <h2 id="contact" className="text-xl font-bold text-foreground">
             Contact
           </h2>
           <dl className="mt-3 space-y-2">
             <div>
-              <dt className="inline text-foreground">Effective date: </dt>
+              <dt className="inline font-medium text-foreground">Effective date: </dt>
               <dd className="inline">{effectiveDate}</dd>
             </div>
             <div>
-              <dt className="inline text-foreground">Developer: </dt>
+              <dt className="inline font-medium text-foreground">Developer: </dt>
               <dd className="inline">{developerName}</dd>
             </div>
             <div>
-              <dt className="inline text-foreground">Email: </dt>
+              <dt className="inline font-medium text-foreground">Email: </dt>
               <dd className="inline">
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="text-accent underline underline-offset-4 hover:opacity-90"
+                  className="text-accent underline underline-offset-4 hover:text-accent-button"
                 >
                   {contactEmail}
                 </a>

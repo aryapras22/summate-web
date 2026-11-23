@@ -38,24 +38,27 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <header className="border-b border-border pb-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+    <div className="mx-auto w-full max-w-3xl px-6 py-12 sm:py-16">
+      <header className="rounded-[28px] border border-border bg-surface p-7 sm:p-9">
+        <span className="inline-flex rounded-full bg-surface-elevated px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cream">
+          Help and Contact
+        </span>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Support
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted">
           Questions about Summate, bug reports, or privacy requests can be sent by email.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center gap-3.5">
           <a
             href={`mailto:${contactEmail}`}
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-full bg-accent-button px-6 py-3 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
           >
             Email {contactEmail}
           </a>
           <Link
             href="/privacy"
-            className="inline-flex items-center justify-center rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-muted"
+            className="inline-flex items-center justify-center rounded-full border border-border bg-surface-elevated px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-white/25"
           >
             View Privacy Policy
           </Link>
@@ -63,17 +66,17 @@ export default function SupportPage() {
       </header>
 
       <section className="pt-10" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" className="text-2xl font-semibold tracking-tight text-foreground">
+        <h2 id="faq-heading" className="text-2xl font-bold tracking-tight text-foreground">
           Frequently Asked Questions
         </h2>
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 space-y-5">
           {faqs.map((item) => (
             <article
               key={item.question}
-              className="rounded-xl border border-border bg-surface p-6"
+              className="rounded-[24px] border border-border bg-surface p-6 sm:p-7"
             >
-              <h3 className="text-base font-medium text-foreground">{item.question}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{item.answer}</p>
+              <h3 className="text-base font-bold text-foreground">{item.question}</h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted">{item.answer}</p>
             </article>
           ))}
         </div>
