@@ -9,7 +9,7 @@
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
   --color-ink-muted: var(--color-ink-muted);
-  --color-ink-on-accent: var(--color-ink-on-accent);
+  --color-accent-ink: var(--color-accent-ink);
   --color-accent: var(--color-accent);
   --color-accent-strong: var(--color-accent-strong);
   --color-accent-end: var(--color-accent-end);
@@ -84,7 +84,7 @@ button:focus-visible {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   background-color: var(--color-accent-strong);
-  color: var(--color-ink-on-accent);
+  color: var(--color-accent-ink);
   font-size: var(--text-sm);
   font-weight: 700;
   white-space: nowrap;
@@ -147,6 +147,7 @@ button:focus-visible {
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.015em;
   white-space: nowrap;
   transition: color var(--dur-micro) var(--ease-out);
@@ -178,6 +179,7 @@ button:focus-visible {
   color: var(--color-ink-muted);
   font-size: var(--text-sm);
   font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
   transition:
     color var(--dur-micro) var(--ease-out),
@@ -205,9 +207,10 @@ button:focus-visible {
   padding: 0 var(--space-4);
   border-radius: var(--radius-pill);
   background-color: var(--color-accent-strong);
-  color: var(--color-ink-on-accent);
+  color: var(--color-accent-ink);
   font-size: var(--text-sm);
   font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
   transition:
     background-color var(--dur-micro) var(--ease-out),
@@ -231,10 +234,11 @@ button:focus-visible {
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-pill);
   background-color: var(--color-accent-strong);
-  color: var(--color-ink-on-accent);
+  color: var(--color-accent-ink);
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
   transition:
@@ -265,9 +269,10 @@ button:focus-visible {
   color: var(--color-ink-muted);
   font-size: var(--text-sm);
   font-weight: 500;
+  line-height: 1;
   text-decoration: underline;
   text-decoration-color: var(--color-rule-strong);
-  text-underline-offset: 0.35em;
+  text-underline-offset: 2px;
   text-decoration-thickness: 1px;
   white-space: nowrap;
   transition:
@@ -288,7 +293,7 @@ button:focus-visible {
   color: var(--color-accent);
   text-decoration: underline;
   text-decoration-color: var(--color-rule-strong);
-  text-underline-offset: 0.28em;
+  text-underline-offset: 2px;
   overflow-wrap: anywhere;
   transition:
     color var(--dur-micro) var(--ease-out),
@@ -313,8 +318,8 @@ button:focus-visible {
 }
 
 .hero {
-  padding-block-start: clamp(6.75rem, 11vw, 9.25rem);
-  padding-block-end: clamp(3rem, 6vw, 4.75rem);
+  padding-block-start: clamp(5.75rem, 8vw, 7rem);
+  padding-block-end: clamp(7.75rem, 10.8vw, 9.5rem);
   text-align: center;
 }
 
@@ -435,6 +440,7 @@ button:focus-visible {
   color: var(--color-ink-muted);
   font-size: var(--text-sm);
   font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
   transition:
     color var(--dur-micro) var(--ease-out),
@@ -572,6 +578,7 @@ button:focus-visible {
   color: var(--color-danger-ink);
   font-size: var(--text-xs);
   font-weight: 600;
+  line-height: 1;
 }
 
 .alert-callout__icon {
@@ -729,6 +736,7 @@ button:focus-visible {
   gap: var(--space-2);
   color: var(--color-ink);
   font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -746,6 +754,7 @@ button:focus-visible {
   color: var(--color-ink-muted);
   font-size: var(--text-sm);
   font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
   transition: color var(--dur-micro) var(--ease-out);
 }
@@ -1004,13 +1013,6 @@ button:focus-visible {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .cta-primary:hover,
-  .nav-pill__cta:hover {
-    transform: translateY(-1px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1024,9 +1026,7 @@ button:focus-visible {
     transition-duration: 120ms !important;
   }
 
-  .cta-primary:hover,
   .cta-primary:active,
-  .nav-pill__cta:hover,
   .nav-pill__cta:active,
   .nav-pill__link:active,
   .nav-pill__brand:active,
